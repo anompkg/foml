@@ -1,3 +1,7 @@
+math.pi = 3.141592653589793
+[math]
+	pi = 3.141592653589793
+
 [Sector 1]
 blah = blah
 [Sector 2]
@@ -7,19 +11,31 @@ foo = bar
 
 main = master
 list = ['a', 'fd', 'f']
+[Sector Name]
+	KEY = VALUE
+[User]
+"Name" = "tfed"
+"Home" = morph /home/<User.Name>
+
+[jj]
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+[revset-aliases]
+"trunk()" = "develop@origin"
 
 
-
-
-
-[
-
-[]
-
-[[[
-
-
-[]
-
-[[]
-
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[Forge]
+    User = anom
+    Repo = transpkg
+    Domain = codeberg.org
+[remote "origin"]
+	url = https://<Forge.Domain>/<Forge.User>/<Forge.Repo>
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "develop"]
+	remote = origin
+	merge = refs/heads/develop
+	vscode-merge-base = origin/develop
