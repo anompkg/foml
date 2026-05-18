@@ -1,5 +1,6 @@
 """Morph Config with INI flavour"""
 
+import inspect, textwrap
 
 class Miniconf:
     filepath = "config.mcf"
@@ -30,7 +31,7 @@ class Miniconf:
                 if sector not in sectors:
                     sectors[sector] = []
                 if i:
-                    sectors[sector] += [i]
+                    sectors[sector] += [inspect.cleandoc(i)]
             print(i)
         return sectors
 
