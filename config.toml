@@ -1,24 +1,38 @@
-math.pi = 3.141592653589793  
-nah = nah
- browser=librewolf
+# Syntax Explained:
+# $Variable = "{text}" # Declare Morph Variable.
+# Variable = "{text}"  # Declare Variable.
+# result = "{$Variable}" # Process and Return Variable regardless of its type
+# result = "{Variable}" # (Process if it's morph) and Return Variable
+
+# Extended Syntax explained:
+# [Path.Variable]
+#	type = morph | string
+#	value = "3.14159265389793"
+#	name = pi
+
+browser = "librewolf"
 
 [math]
-	pi = 3.141592653589793    	
+	pi = 3.141592653589793  
 
-[Sector 1]
-blah = blah
-[Sector 2]
-foo = bar
-[]
+["Sector 1"]
+	blah = "blah"
+
+["Sector 2"]
+	foo = "bar"
 
 
-main = master
+main = "master"
 list = ['a', 'fd', 'f']
-[Sector Name]
-	KEY = VALUE
+["Sector Name"]
+	KEY = "VALUE"
 [User]
-"Name" = "tfed"
-"Home" = morph /home/<User.Name>
+	Type = "{main}.file"
+	# Define variable as morph explicitly.
+	"$Name" = "anom{pi}"
+	#  Home uses variables and $processes as morphs on purpose
+	# Note: Type is Type is not morph thus is not processed
+	Home = "/home/{$User.Name}/{$Type}"
 
 [jj]
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
@@ -32,13 +46,13 @@ list = ['a', 'fd', 'f']
 	bare = false
 	logallrefupdates = true
 [Forge]
-    User = anom
-    Repo = transpkg
-    Domain = codeberg.org
-[remote "origin"]
-	url = https://<Forge.Domain>/<Forge.User>/<Forge.Repo>
-	fetch = +refs/heads/*:refs/remotes/origin/*
-[branch "develop"]
-	remote = origin
-	merge = refs/heads/develop
-	vscode-merge-base = origin/develop
+    User = "anom"
+    Repo = "transpkg"
+    Domain = "codeberg.org"
+["remote origin"]
+	url = "https://{Forge.Domain}/{Forge.User}/{Forge.Repo}"
+	fetch = "+refs/heads/*:refs/remotes/origin/*"
+["branch develop"]
+	remote = "origin"
+	merge = "refs/heads/develop"
+	vscode-merge-base = "origin/develop"
