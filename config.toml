@@ -14,7 +14,9 @@
 browser = "librewolf"
 
 [math]
-	pi = 3.141592653589793  
+	pi = 3.141592653589793
+	# [math.about]
+	$pi = "3.141592653589793"
 
 ["Sector 1"]
 	blah = "blah"
