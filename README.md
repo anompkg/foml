@@ -1,19 +1,31 @@
-# miniconf
-the Morph Config with INI flavour.
-Config is like .ini but sectors use OOP names.
-Default sector is [] which is the root of the tree.
-Usually when people define another section they can return back to default section.
-Here every section is store inside root section and also sub sections are allowed
+# foml
+Foml is a language for storing requests and URLs inside TOML.
+FOML's name stands for "Format tOML".
 
 # example
-```config
-[Sector Name]
-	KEY = VALUE
-[User]
-"Name" = "tfed"
-"Home" = morph /home/<User.Name>
+```config config.foml
+[user]
+	"name" = "anom"
+
+	# $ at the begining of names makes variable formatable.	
+
+	# You can use global path
+	"$home" = "/home/{user.name}"  # global name
+
+	# You can also access variables "localy" that are in the same [Sector] 
+	# "$home" = "/home/{.name}"  # relative/local name
+	# Symbols at the begging of name provide context
+	# . Dot in this context mean local.
+```
+
+Run in `python` or even `uv run python`
+```python main.py
+import foml
+
+fml = foml.load("config.foml")
+
+print( fml["home"] )
+# Output: /home/anom
 
 ```
-Note, it may seem that Home variable is using Name variable, but miniconf only cares about sectors and key with values.
-The actual syntax showed here works in mfs and morph that will store its configs in miniconf format. 
-So miniconf here will return plain text.
+
