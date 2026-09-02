@@ -1,8 +1,9 @@
 # Syntax Explained:
 # $Variable = "{text}" # Declare Morph Variable.
 # Variable = "{text}"  # Declare Variable.
-# result = "{$Variable}" # Process and Return Variable regardless of its type
+# result = "{$Variable}" # Process and Return Variable (regardless of its type)
 # result = "{Variable}" # (Process if it's morph) and Return Variable
+# result = "{#Variable}" # Return Variable Value as is (regardless of its type)
 
 # Extended Syntax explained:
 # [Path.Variable]
